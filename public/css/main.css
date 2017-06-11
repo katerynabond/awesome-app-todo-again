@@ -1,0 +1,11 @@
+ul.todo-list {
+  list-style-type: none;
+}
+
+li.complete{
+  text-decoration:line-through;
+}
+
+/*li.non-complete{
+  text-decoration: none;
+}*/

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Awesome App Todos Again</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <div id="app">
+    <section class="create">
+      <form class='create-form'>
+        <input type="text" class='task-input' required='true'/>
+        <button type='submit' class="add-button">+</button>
+      </form>
+    </section>
+    <section class="read">
+      <ul class="todo-list">
+        <li class="todo">
+          <input type="checkbox" class="checkbox">
+          <!-- added a checkbox button -->
+          something to do
+          <button class="delete-todo">X</button>
+        </li>
+      </ul>
+
+    </section>
+  </div>
+  <script src='js/app.js'></script>
+</body>
+</html>
