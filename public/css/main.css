@@ -5,7 +5,3 @@ ul.todo-list {
 li.complete{
   text-decoration:line-through;
 }
-
-/*li.non-complete{
-  text-decoration: none;
-}*/
