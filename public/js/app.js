@@ -77,11 +77,11 @@ const TodoApp = {
   },
 
   liFunction: function(todo){
-      return `<li ${todo.isComplete?"class='complete'":""}><input type="checkbox" class="checkbox" ${todo.isComplete?"checked":""}/>${todo.task}<button class='delete'>X</button></li>`;
+      return `<li><input type="checkbox" class="checkbox checkbox-button" ${todo.isComplete?"checked":""}/><span ${todo.isComplete?"class='complete'":""}>${todo.task}</span><button class='delete delete-button'>X</button></li>`;
   },
 
   render: function(){
-    const lis = this.todos      
+    const lis = this.todos
                       .map(todo => this.liFunction(todo))
                       .join('');
     this.todoList.innerHTML = lis;// be carefull can lead to security issues
