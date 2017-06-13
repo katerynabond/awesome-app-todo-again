@@ -74,3 +74,11 @@ ul.todo-list li span {
   display: inline-block;
   border: none;
 }
+
+.update-button{
+  background-color: #9AA4AF;
+  color: white;
+  border-radius: 8px;
+  display: inline-block;
+  border: none;
+}

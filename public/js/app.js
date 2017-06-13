@@ -76,8 +76,28 @@ const TodoApp = {
     this.render();
   },
 
+  cacheUpdateButtons: function(){
+    this.updateButtons = this.root.querySelectorAll('.update-todo');
+  },
+
+  bindUpdateEvent: function(){
+    this.updateButtons.forEach((input, index) =>{
+      console.log(index);
+      input.addEventListener('click', ()=> this.updateToDo(index));
+    });
+  },
+
+  updateToDo: function(index){
+
+    this.todos[index].task = this.taskInput.value;
+    this.render();
+    this.taskInput.value = '';
+
+  },
+
+
   liFunction: function(todo){
-      return `<li><input type="checkbox" class="checkbox checkbox-button" ${todo.isComplete?"checked":""}/><span ${todo.isComplete?"class='complete'":""}>${todo.task}</span><button class='delete delete-button'>X</button></li>`;
+      return `<li><input type="checkbox" class="checkbox checkbox-button" ${todo.isComplete?"checked":""}/><span ${todo.isComplete?"class='complete'":""}>${todo.task}</span><button class='delete delete-button'>X</button><button class="update-todo update-button">Update</button></li>`;
   },
 
   render: function(){
@@ -87,8 +107,10 @@ const TodoApp = {
     this.todoList.innerHTML = lis;// be carefull can lead to security issues
     this.cacheCheckBoxes();
     this.cacheDeleteButtons();
+    this.cacheUpdateButtons();
     this.bindDeleteEvents();
     this.bindCheckBoxesEvent();
+    this.bindUpdateEvent();
   //const lis = this.todos.map(function (todo, index){});
   },
 
