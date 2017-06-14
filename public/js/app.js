@@ -97,14 +97,55 @@ const TodoApp = {
 
 
   liFunction: function(todo){
-      return `<li><input type="checkbox" class="checkbox checkbox-button" ${todo.isComplete?"checked":""}/><span ${todo.isComplete?"class='complete'":""}>${todo.task}</span><button class='delete delete-button'>X</button><button class="update-todo update-button">Update</button></li>`;
-  },
+      //return `
+      //<li>
+      //<input type="checkbox" class="checkbox checkbox-button" ${todo.isComplete?"checked":""}/>
+      //<span ${todo.isComplete?"class='complete'":""}>${todo.task}</span>
+      //<button class='delete delete-button'>X</button>
+      //<button class="update-todo update-button">Update</button></li>`;
 
+      const li = document.createElement('li');
+      li.className = "todo";
+
+      const input = document.createElement('input');
+      input.type = "checkbox";
+      input.className = "checkbox checkbox-button";
+      if (todo.isComplete){
+        input.checked = true;
+      }
+      else{
+        input.checked = false;
+      }
+      li.appendChild(input);
+
+
+      const span = document.createElement('span');
+      span.appendChild(document.createTextNode(todo.task));
+      if (todo.isComplete){
+        span.className = "complete";
+      }
+      li.appendChild(span);
+
+
+      const deleteButton = document.createElement('button');
+      deleteButton.className = "delete delete-button";
+      deleteButton.appendChild(document.createTextNode('X'));
+      li.appendChild(deleteButton);
+
+
+      const updateButton =document.createElement('button');
+      updateButton.className = "update-todo update-button";
+      updateButton.appendChild(document.createTextNode('Update'));
+      li.appendChild(updateButton);
+
+      return li;
+
+  },
   render: function(){
-    const lis = this.todos
-                      .map(todo => this.liFunction(todo))
-                      .join('');
-    this.todoList.innerHTML = lis;// be carefull can lead to security issues
+    this.todoList.innerHTML = '';
+    this.todos.map(todo => this.todoList.appendChild(this.liFunction(todo)));
+
+    //this.todoList.appendChild(lis);// be carefull can lead to security issues
     this.cacheCheckBoxes();
     this.cacheDeleteButtons();
     this.cacheUpdateButtons();
